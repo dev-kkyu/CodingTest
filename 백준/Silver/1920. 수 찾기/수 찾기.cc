@@ -1,5 +1,5 @@
 #include <iostream>
-#include <set>
+#include <algorithm>
 
 using namespace std;
 
@@ -9,7 +9,7 @@ int main()
 	std::cin.tie(nullptr);
 	std::cout.tie(nullptr);
 
-	set<long long> nums;
+	long long nums[100000];
 
 	int count;
 	cin >> count;
@@ -17,13 +17,16 @@ int main()
 	for (int i = 0; i < count; ++i) {
 		long long num;
 		cin >> num;
-		nums.insert(num);
+		nums[i] = num;
 	}
 
-	cin >> count;
-	for (int i = 0; i < count; ++i) {
+	sort(nums, nums + count);
+
+	int newCount;
+	cin >> newCount;
+	for (int i = 0; i < newCount; ++i) {
 		long long num;
 		cin >> num;
-		cout << nums.count(num) << '\n';
+		cout << int(binary_search(nums, nums + count, num)) << '\n';
 	}
 }
