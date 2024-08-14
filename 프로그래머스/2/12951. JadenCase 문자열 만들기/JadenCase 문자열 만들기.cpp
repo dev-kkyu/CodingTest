@@ -1,5 +1,4 @@
 #include <string>
-#include <vector>
 #include <cctype>
 
 using namespace std;
@@ -14,16 +13,11 @@ string solution(string s) {
             flag = true;
         }
         else if (flag){
-            if (isalpha(c)){
-                if (islower(c))
-                    c -= 'a' - 'A';
-            }
+            c = toupper(c);
             flag = false;
         }
         else{
-            if (isupper(c)){
-                c += 'a' - 'A';
-            }
+            c = tolower(c);
         }
         str.push_back(c);
     }
