@@ -1,14 +1,10 @@
 #include <iostream>
-#include <vector>
-#include <numeric>
+#include <bitset>
+
 using namespace std;
 
 int solution(int n)
 {
-    int answer = 0;
-    while(n > 0){
-        answer += n % 2;
-        n /= 2;
-    }
-    return answer;
+    bitset<32> ans(n);
+    return ans.count();
 }
