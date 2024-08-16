@@ -5,34 +5,27 @@
 
 using namespace std;
 
-void my_search(int from, vector<bool>& visited, int n, vector<vector<int>> computers)
+void my_search(set<int>& sets, int index, int n, const vector<vector<int>>& computers)
 {
-    for(int i=0;i<n;++i){
-        if (i != from){
-            if (not visited[i]){
-                if (computers[from][i]){
-                    visited[i] = true;
-                    my_search(i, visited, n, computers);
-                }
+    sets.erase(index);
+    for(int i = 0; i < n; ++i){
+        if (i != index and 1 == computers[index][i]){
+            if (sets.find(i) != sets.end()){
+                my_search(sets, i, n, computers);
             }
         }
     }
 }
 
 int solution(int n, vector<vector<int>> computers) {
-    vector<bool> visited(n, false);
-    
+    set<int> nums;
+    for(int i=0;i<n;++i)
+        nums.insert(i);
+
     int answer = 0;
-    for(int i=0;i<n;++i){
-        if (visited[i])
-            continue;
-        
-        visited[i] = true;
-        my_search(i, visited, n, computers);
-        i = -1;
-        
+    while(nums.size() > 0){
+        my_search(nums, *nums.begin(), n, computers);
         ++answer;
     }
-    
     return answer;
 }
