@@ -5,13 +5,10 @@
 
 using namespace std;
 
+unordered_map<char, char> charMap{{'[', ']'}, {'{', '}'}, {'(', ')'}};
+
 bool isValidString(const list<char>& strs)
 {
-    unordered_map<char, char> charMap;
-    charMap['['] = ']';
-    charMap['{'] = '}';
-    charMap['('] = ')';
-    
     stack<char> stackStr;
     
     for(char c : strs){
@@ -25,6 +22,7 @@ bool isValidString(const list<char>& strs)
                 stackStr.push(c);
         }
     }
+    
     return stackStr.empty();
 }
 
