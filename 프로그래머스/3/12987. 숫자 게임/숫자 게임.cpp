@@ -10,10 +10,10 @@ int solution(vector<int> A, vector<int> B) {
     
     int score = 0;
     
-    for(int i=0;i<A.size();++i){
-        if (A[i] < B.back()){
+    for(int i=0, j = A.size() - 1; i<A.size(); ++i){
+        if (A[i] < B[j]){
             ++score;
-            B.erase(B.end() - 1);
+            --j;
         }
     }
     
