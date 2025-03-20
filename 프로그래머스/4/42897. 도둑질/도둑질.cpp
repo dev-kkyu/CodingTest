@@ -29,6 +29,4 @@ int solution(vector<int> money) {
     answer = max(answer, max(dp[dp.size() - 1], dp[dp.size() - 2]));
     
     return answer;
-    
-    
 }
