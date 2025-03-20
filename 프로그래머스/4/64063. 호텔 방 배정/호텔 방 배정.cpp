@@ -23,7 +23,7 @@ vector<long long> solution(long long k, vector<long long> room_number) {
         answer.push_back(findValue);
             
         for(const auto& update : updateRooms){      // 지나쳐온 값들 모두 업데이트 해주기
-            stayRooms[update] = stayRooms[findValue];
+            stayRooms[update] = findValue + 1;
         }
     }
 
